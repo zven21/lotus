@@ -36,7 +36,7 @@ defmodule Lotus.Core.Product do
   - `process_flow` represents the manufacturing process of the product.
   - `product_type` indicates whether it is a raw material, semi - finished good, or finished good.
   """
-  def new(id, name, description, bom, process_flow, product_type) do
+  def new(id, name, description, bom, process_flow, product_type \\ :finished_good) do
     %__MODULE__{
       id: id,
       name: name,
