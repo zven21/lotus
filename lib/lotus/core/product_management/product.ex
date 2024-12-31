@@ -1,6 +1,12 @@
 defmodule Lotus.Core.Product do
   @moduledoc """
-  领域模型： 产品
+  Domain model for Product
+
+    - The `Product` struct represents a product in the system.
+    - It includes an identifier (`id`), name, description, its Bill of Materials (`bom`),
+    - process flow (`process_flow`), and product type (`product_type`).
+    - `product_type` can be :raw_material, :semi_finished_good, or :finished_good.
+
   """
 
   alias Lotus.Core.{BOM, ProcessFlow}
@@ -23,6 +29,13 @@ defmodule Lotus.Core.Product do
             process_flow: nil,
             product_type: nil
 
+  @doc """
+  Create a new Product instance.
+
+  - `bom` is the Bill of Materials associated with the product.
+  - `process_flow` represents the manufacturing process of the product.
+  - `product_type` indicates whether it is a raw material, semi - finished good, or finished good.
+  """
   def new(id, name, description, bom, process_flow, product_type) do
     %__MODULE__{
       id: id,

@@ -1,6 +1,8 @@
 defmodule Lotus.Core.Resource do
   @moduledoc false
+
   @enforce_keys [:id, :name, :quantity, :available_quantity]
+
   @type t :: %__MODULE__{
           id: binary(),
           name: binary(),

@@ -1,5 +1,7 @@
 defmodule Lotus.Core.Supplier do
-  @moduledoc false
+  @moduledoc """
+  Domain model for Supplier
+  """
 
   @enforce_keys [:id, :name, :contact_info]
 

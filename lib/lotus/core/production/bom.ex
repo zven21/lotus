@@ -1,7 +1,12 @@
 defmodule Lotus.Core.BOM do
   @moduledoc """
-  # BOM 结构体，增加委外组件标识
+  # The `BOM` (Bill of Materials) struct holds information about the components
+  # required to manufacture a product.
+  # It has an identifier (`id`) and a map of `components`.
+  # Each key in the `components` map is a unique identifier for the component,
+  # and the value is a `BOMItem` struct.
   """
+
   alias Lotus.Core.BOMItem
 
   @enforce_keys [:id, :components]
@@ -18,6 +23,13 @@ defmodule Lotus.Core.BOM do
   defstruct id: nil,
             components: %{}
 
+  @doc """
+  Creates a new `BOM` instance.
+
+  - `id` is the unique identifier for the BOM.
+  - `components` is a map where each entry represents a component in the BOM.
+
+  """
   def new(id, components) do
     %__MODULE__{
       id: id,
