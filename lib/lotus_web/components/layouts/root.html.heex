@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="Lotus" suffix=" · Phoenix Framework">
+      {assigns[:page_title]}
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
+    </script>
+    <script>
+      (() => {
+        const setTheme = (theme) => 
+          if (theme === "system") {
+            localStorage.removeItem("phx:theme");
+            document.documentElement.removeAttribute("data-theme");
+          } else {
+            localStorage.setItem("phx:theme", theme);
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        };
+        setTheme(localStorage.getItem("phx:theme") || "corporate");
+        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
+        window.addEventListener("phx:set-theme", ({ detail: { theme } }) => setTheme(theme));
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen bg-base-200">
+      <!-- Header -->
+      <div class="navbar bg-blue-600 text-white">
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl text-white" href="/">Lotus CMS</a>
+        </div>
+        <div class="flex-none">
+          <div class="badge badge-outline mr-2 bg-blue-500 border-white text-white">v0.1</div>
+        </div>
+      </div>
+      
+<!-- Sidebar + Content under header -->
+      <div class="flex">
+        <aside class="w-64 bg-base-100 text-base-content border-r border-blue-100 min-h-[calc(100vh-4rem)]">
+          <ul class="menu p-4">
+            <li class="menu-title"><span>Content</span></li>
+            <li><a href="/cms/builder">Content-Type Builder</a></li>
+
+            <li><a href="/cms">Content Manager</a></li>
+          </ul>
+        </aside>
+        <main class="flex-1 p-4">
+          {@inner_content}
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

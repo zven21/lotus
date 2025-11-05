@@ -1,0 +1,38 @@
+<div class="p-6 space-y-4">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-bold">{inspect(@module)}</h1>
+    <div class="flex gap-2">
+      <.link navigate={~p"/cms/builder"} class="btn btn-ghost btn-sm">Back</.link>
+      <!-- 预留 new 路径，后续实现 -->
+      <button class="btn btn-primary btn-sm" disabled>New</button>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Locale</th>
+          <th>Inserted</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for e <- @entries do %>
+          <tr>
+            <td class="font-mono">{e.id}</td>
+            <td>{Map.get(e, :status)}</td>
+            <td>{Map.get(e, :locale)}</td>
+            <td>{Map.get(e, :inserted_at)}</td>
+            <td class="text-right">
+              <button class="btn btn-xs" disabled>Edit</button>
+              <button class="btn btn-xs btn-error" disabled>Delete</button>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
