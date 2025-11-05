@@ -17,13 +17,6 @@ Lotus 是一个灵活的元数据驱动框架，参考了 Strapi 的设计思路
 
 **核心理念**：模型即真相。建模产出即为代码真相，可审阅、可追踪、可扩展，兼具高并发与低延迟的运行时特性。
 
-### 演示视频
-
-<video width="100%" controls>
-  <source src="./docs/intr.mov" type="video/quicktime">
-  您的浏览器不支持视频播放。请 <a href="./docs/intr.mov">下载视频</a> 查看。
-</video>
-
 ### 应用场景
 
 Lotus 设计灵活，可以适应多种场景。虽然可以用作 Headless CMS，但不仅限于此：
