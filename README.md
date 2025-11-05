@@ -1,71 +1,69 @@
 # Lotus
 
 <div align="center">
-**基于 Elixir/Phoenix/Ash 的元数据驱动代码生成框架**
-
 **A metadata-driven code generation framework built with Elixir, Phoenix, and Ash Framework**
 
 </div>
 
 ---
 
-**Language**: [English](./README_EN.md) | 中文
+**Language**: English | [中文](./README_CN.md)
 
-## 📖 简介
+## 📖 Introduction
 
-Lotus 是一个灵活的元数据驱动框架，参考了 Strapi 的设计思路，基于 Elixir、Phoenix 和 Ash Framework 构建。它采用"元数据驱动"的方式定义类型、字段与关系，并通过 Publisher 一键生成可版本化的 Elixir 资源代码与数据库迁移，同时自动暴露 JSON:API 与 GraphQL 接口。
+Lotus is a flexible metadata-driven framework inspired by Strapi, built on Elixir, Phoenix, and Ash Framework. It adopts a "metadata-driven" approach to define types, fields, and relationships, and generates versionable Elixir resource code and database migrations through the Publisher with one click, while automatically exposing JSON:API and GraphQL interfaces.
 
-**核心理念**：模型即真相。建模产出即为代码真相，可审阅、可追踪、可扩展，兼具高并发与低延迟的运行时特性。
+**Core Philosophy**: Models as Truth. The modeling output becomes the code truth, reviewable, traceable, and extensible, with high concurrency and low latency runtime characteristics.
 
-### 应用场景
+### Use Cases
 
-Lotus 设计灵活，可以适应多种场景。虽然可以用作 Headless CMS，但不仅限于此：
+Lotus is designed to be flexible and adaptable. While it can serve as a Headless CMS, it's not limited to that:
 
-- **低代码平台底层**：在 Lotus 的元数据驱动架构之上构建你的低代码平台
-- **AI 架构**：作为需要动态生成 Schema 的 AI 应用的底层基础
-- **内部快速脚手架**：从元数据定义快速生成公司内部工具和应用
-- **内容管理**：作为传统 Headless CMS 用于内容驱动的应用
+- **Low-Code Platform Foundation**: Build your low-code platform on top of Lotus's metadata-driven architecture
+- **AI Architecture**: Use as a foundation for AI-powered applications that need dynamic schema generation
+- **Internal Rapid Scaffolding**: Generate company-internal tools and applications quickly from metadata definitions
+- **Content Management**: Use as a traditional Headless CMS for content-driven applications
 
-**说明**：项目仍在演进中，尚未定型。我们正在探索不同的应用场景，欢迎贡献来共同塑造其发展方向。
+**Note**: The project is still evolving and not yet finalized. We're exploring different use cases and welcome contributions to shape its direction.
 
-## ✨ 特性
+## ✨ Features
 
-### ✅ 已实现
+### ✅ Implemented
 
-- **📊 元数据驱动建模**
-  - 通过可视化 Builder 界面或配置文件定义类型、字段和关系
+- **📊 Metadata-Driven Modeling**
+  - Define types, fields, and relationships through visual Builder interface or configuration files
 
-- **🚀 一键发布**
-  - 生成可版本化的 `.ex` 资源文件和数据库迁移
+- **🚀 One-Click Publishing**
+  - Generate versionable `.ex` resource files and database migrations
 
-- **🔄 关系自动反向**
-  - `manyToOne` 自动生成 `oneToMany` 反向关系
+- **🔄 Automatic Relationship Reversal**
+  - `manyToOne` automatically generates `oneToMany` reverse relationships
 
-- **🌐 双协议输出**
-  - 内置 JSON:API 和 GraphQL 支持（包含 GraphiQL Playground）
+- **🌐 Dual Protocol Output**
+  - Built-in JSON:API and GraphQL support (includes GraphiQL Playground)
 
-- **📝 可视化内容管理**
-  - Entries 界面进行直观的 CRUD 操作
+- **📝 Visual Content Management**
+  - Intuitive CRUD operations through Entries interface
 
-- **🔍 配置验证**
-  - JSON Schema 校验配置完整性
+- **🔍 Configuration Validation**
+  - JSON Schema validation for configuration integrity
 
-- **📈 增量迁移**
-  - 支持配置 diff 和增量迁移生成
+- **📈 Incremental Migrations**
+  - Support for configuration diff and incremental migration generation
 
-### ⏳ 规划中
+### ⏳ Planned
 
-- 更多字段类型（枚举、富文本、JSON schema）
-- 权限控制（RBAC/ABAC）
-- 草稿/发布工作流
-- 媒体资产管理
-- 多环境配置对齐
+- More field types (enum, rich text, JSON schema)
+- Permission control (RBAC/ABAC)
+- Draft/Publish workflow
+- Media asset management
+- Multi-environment configuration alignment
 - Webhooks/Events
-- 插件化机制
+- Plugin mechanism
 
-## 🏗️ 架构
+## 🏗️ Architecture
 
-### 核心组件
+### Core Components
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -85,7 +83,7 @@ Lotus 设计灵活，可以适应多种场景。虽然可以用作 Headless CMS�
           ┌───────────┴───────────┐
           ▼                       ▼
 ┌──────────────────┐    ┌──────────────────┐
-│  生成代码         │    │  数据库 Schema    │
+│  Generated Code   │    │  Database Schema  │
 │  (Ash Resources)  │    │  (Ecto Migrations)│
 └──────────────────┘    └──────────────────┘
           │                       │
@@ -96,69 +94,69 @@ Lotus 设计灵活，可以适应多种场景。虽然可以用作 Headless CMS�
           └──────────────────────┘
 ```
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 前置要求
+### Prerequisites
 
 - Elixir ~> 1.15
 - Erlang/OTP 24+
 - PostgreSQL 12+
-- Node.js (用于前端资源构建)
+- Node.js (for frontend asset building)
 
-### 安装
+### Installation
 
 ```bash
-# 克隆仓库
+# Clone repository
 git clone https://github.com/zven21/lotus.git
 cd lotus
 
-# 安装依赖
+# Install dependencies
 mix deps.get
 
-# 设置数据库
+# Setup database
 mix ecto.setup
 
-# 启动服务器
+# Start server
 mix phx.server
 
-# 打开浏览器
+# Open browser
 open http://localhost:4000/cms/
 ```
 
-### 使用流程
+### Usage Flow
 
-#### 1. 定义内容类型
+#### 1. Define Content Type
 
-访问 `/cms/builder` 创建内容类型：
+Visit `/cms/builder` to create content types:
 
-- 创建 ContentType（如 `article`, `author`）
-- 添加 ContentField（如 `title`, `body`, `email`）
-- 定义 ContentRelation（如 `article.author` → `manyToOne`）
+- Create ContentType (e.g., `article`, `author`)
+- Add ContentField (e.g., `title`, `body`, `email`)
+- Define ContentRelation (e.g., `article.author` → `manyToOne`)
 
-#### 2. 管理内容
+#### 2. Manage Content
 
-访问 `/cms/:slug/entries` 进行内容管理：
+Visit `/cms/:slug/entries` for content management:
 
-- 创建、编辑、删除条目
-- 关系字段自动以下拉选择器呈现
+- Create, edit, delete entries
+- Relationship fields automatically displayed as dropdown selectors
 
-#### 3. 使用 API
+#### 3. Use APIs
 
 **JSON:API**
 ```bash
-# 获取所有文章
+# Get all articles
 GET /api/article
 
-# 获取单篇文章
+# Get single article
 GET /api/article/:id
 ```
 
 **GraphQL**
 ```graphql
-# 访问 GraphiQL Playground
+# Visit GraphiQL Playground
 GET /api/graphiql
 
-# 查询示例
+# Query example
 query {
   articles {
     id
@@ -172,65 +170,65 @@ query {
 }
 ```
 
-## 📁 项目结构
+## 📁 Project Structure
 
 ```
 lotus/
 ├── lib/
 │   ├── lotus/
 │   │   ├── cms/
-│   │   │   ├── ash/              # Ash 资源定义
-│   │   │   ├── publisher/        # 发布系统核心
-│   │   │   │   ├── application/  # 应用层（检查、钩子）
-│   │   │   │   ├── generators/   # 代码生成器
-│   │   │   │   ├── infrastructure/ # 基础设施
-│   │   │   │   └── interfaces/   # 接口层
+│   │   │   ├── ash/              # Ash resource definitions
+│   │   │   ├── publisher/        # Publisher system core
+│   │   │   │   ├── application/  # Application layer (checks, hooks)
+│   │   │   │   ├── generators/   # Code generators
+│   │   │   │   ├── infrastructure/ # Infrastructure
+│   │   │   │   └── interfaces/   # Interface layer
 │   │   │   └── config_monitor.ex
-│   │   ├── generated/            # 生成的资源代码
-│   │   └── dynamic_module.ex     # 动态模块生成
+│   │   ├── generated/            # Generated resource code
+│   │   └── dynamic_module.ex     # Dynamic module generation
 │   └── lotus_web/
-│       ├── controllers/          # Phoenix 控制器
-│       ├── live/                 # LiveView 页面
-│       └── router.ex             # 路由定义
+│       ├── controllers/          # Phoenix controllers
+│       ├── live/                 # LiveView pages
+│       └── router.ex             # Route definitions
 ├── priv/
 │   ├── cms/
-│   │   └── config/               # 配置文件目录
+│   │   └── config/               # Configuration file directory
 │   └── repo/
-│       └── migrations/           # 数据库迁移
-├── test/                         # 测试文件
-└── docs/                         # 文档
+│       └── migrations/           # Database migrations
+├── test/                         # Test files
+└── docs/                         # Documentation
 ```
 
-## 🛠️ 技术栈
+## 🛠️ Tech Stack
 
-### 核心框架
+### Core Frameworks
 
-- **Elixir** ~> 1.15 - 函数式编程语言
-- **Phoenix** ~> 1.8 - Web 框架
-- **Ash Framework** ~> 3.7 - 资源定义和 API 生成
+- **Elixir** ~> 1.15 - Functional programming language
+- **Phoenix** ~> 1.8 - Web framework
+- **Ash Framework** ~> 3.7 - Resource definitions and API generation
 
-### 数据库
+### Database
 
-- **PostgreSQL** - 通过 Ecto/Postgrex
+- **PostgreSQL** - via Ecto/Postgrex
 
-### 前端
+### Frontend
 
-- **Phoenix LiveView** - 实时 UI
-- **Tailwind CSS** - 样式框架
+- **Phoenix LiveView** - Real-time UI
+- **Tailwind CSS** - Styling framework
 
-## 🤝 贡献
+## 🤝 Contributing
 
-我们欢迎所有形式的贡献！请查看 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解详情。
+We welcome all kinds of contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
-## 📄 许可证
+## 📄 License
 
-本项目采用 [MIT License](./LICENSE)。
+This project is licensed under the [MIT License](./LICENSE).
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-- 受 [Strapi](https://strapi.io/) 的设计思路启发
-- 基于 [Ash Framework](https://ash-hq.org/) 的强大能力
-- 使用 [Phoenix Framework](https://www.phoenixframework.org/) 构建
+- Inspired by [Strapi](https://strapi.io/) design philosophy
+- Built on the powerful [Ash Framework](https://ash-hq.org/)
+- Constructed with [Phoenix Framework](https://www.phoenixframework.org/)
 
 <div align="center">
 
